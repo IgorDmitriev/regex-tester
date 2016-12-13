@@ -1,0 +1,26 @@
+<h1>See what your regex matches in real world.</h1>
+
+<form class="" action="<%= search_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="">Regex:
+    <input type="text" name="regex" value="">
+  </label>
+
+  <button type="submit" name="button">Match!</button>
+</form>
+<h3>Regex:  <%= @regex %></h3>
+<h3>Matches:</h3>
+<table>
+  <tr>
+    <th>String</th>
+    <th>Match</th>
+  </tr>
+  <% p @matched_strings %>
+  <% @matched_strings.each do |string, match| %>
+    <tr>
+      <td><%= string %></td>
+      <td><%= match %></td>
+    </tr>
+  <% end if @matched_strings %>
+</table>
